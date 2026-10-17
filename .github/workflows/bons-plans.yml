@@ -30,9 +30,8 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_TASK_ID: ${{ secrets.APIFY_TASK_ID }}
           APIFY_RUN_ID: ${{ secrets.APIFY_RUN_ID }}
-          MIN_DISCOUNT: '50'
-          MAX_POSTS: '3'
         run: python bot.py
 
       - name: Sauvegarder les jeux publies
