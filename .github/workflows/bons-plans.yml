@@ -1,0 +1,28 @@
+
+name: Bons Plans Instant Gaming
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bons-plans:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Recuperer les fichiers
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Lancer le bot
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_RUN_ID: ${{ secrets.APIFY_RUN_ID }}
+        run: python bot.py
